@@ -1,0 +1,50 @@
+
+
+def GC_content(DNA_sequence):
+        GC=DNA_sequence.count("G") + DNA_sequence.count("C")
+        bases= len(DNA_sequence)
+        return GC/bases * 100
+
+
+def AT_content(DNA_sequence):
+    AT=DNA_sequence.count("A") + DNA_sequence.count("T")
+    bases= len(DNA_sequence)
+    return AT/bases * 100
+
+def base_content(DNA_sequence,base):
+    count= DNA_sequence.count(base)
+    bases= len(DNA_sequence)
+    return count/bases * 100
+
+
+while True:
+
+    DNA_sequence=input("Enter a DNA sequence:").upper().strip()
+    print()
+
+
+    if DNA_sequence and all(base in "ATCG" for base in DNA_sequence):
+
+        print(f"Length of your DNA sequence:{len(DNA_sequence)}")
+        print()
+
+        result= round(GC_content(DNA_sequence),2)
+        print(f"GC content:{result}%")
+
+        result= round(AT_content(DNA_sequence),2)
+        print(f"AT content:{result}%")
+        print()
+
+        for base in "ATCG":
+            result= round(base_content(DNA_sequence, base),2)
+            print(f"{base}:{result}%")
+        print()
+
+        print(f"A:{DNA_sequence.count('A')}")
+        print(f"T:{DNA_sequence.count('T')}")
+        print(f"C:{DNA_sequence.count('C')}")
+        print(f"G:{DNA_sequence.count('G')}")
+
+    else:
+        print("Please enter a valid sequence.")
+        print()
